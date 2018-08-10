@@ -22,6 +22,14 @@ new Vue({
   store,
   components: { App },
   template: '<App/>',
+  created() {
+    this.setupRoute()
+  },
+  methods: {
+    setupRoute() {
+      if(!this.$route.name) this.$router.replace({ name: '404' })
+    },
+  },
   metaInfo() {
     return {
       title: 'Base Vue Webpack Template',
@@ -30,6 +38,11 @@ new Vue({
         { rel: 'shortcut icon', href: 'static/favicon.ico' },
       ],
       meta: [],
+    }
+  },
+  watch: {
+    $route() {
+      this.setupRoute()
     }
   },
 })
