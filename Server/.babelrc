@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "es2015",
+    "stage-3"
+  ],
+  "plugins": ["transform-runtime"],
+  "env": {
+    "test": {
+      "presets": ["env", "es2015", "stage-3"],
+      "plugins": ["istanbul", "syntax-dynamic-import"]
+    }
+  }
+}

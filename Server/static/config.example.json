@@ -1,0 +1,9 @@
+{
+  "allowOrigin": [
+    "localhost"
+  ],
+  "cache": {
+    "TTL": 60
+  },
+  "debug": true
+}
