@@ -1,9 +1,10 @@
 {
   "allowOrigin": [
-    "localhost"
+    "http://localhost:8081"
   ],
   "cache": {
-    "TTL": 60
+    "ttl": 60,
+    "maxsize": 1000
   },
   "debug": false
 }

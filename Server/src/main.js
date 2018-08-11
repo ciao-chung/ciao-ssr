@@ -33,7 +33,7 @@ class App {
       return
     }
 
-    new WebServer()
+    new WebServer(this.config)
   }
 }
 

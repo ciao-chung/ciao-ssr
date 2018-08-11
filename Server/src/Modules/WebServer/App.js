@@ -56,6 +56,7 @@ class App {
   _isAllowOrigin(url) {
     const origin = new UrlParser(url).origin
     log(origin, 'yellow')
+    if(this.config.allowOrigin == '*') return true
     if(typeof this.config.allowOrigin == 'string') return this.config.allowOrigin == origin
     if(!Array.isArray(this.config.allowOrigin)) return false
     return this.config.allowOrigin.indexOf(origin) > -1

@@ -8,7 +8,7 @@
     "dev": "npm run build; npm run start",
     "unit": "node node_modules/mocha-webpack/bin/mocha-webpack test/unit/specs/**/*.js --webpack-config build/webpack.test.conf.js",
     "unit:single": "node node_modules/mocha-webpack/bin/mocha-webpack --webpack-config build/webpack.test.conf.js",
-    "start": "node dist/app.js --config=static/config.json",
+    "start": "node dist/app.js",
     "build": "node build/build.js",
     "prod": "node build/build.js --prod",
     "prod:clean": "rm -rf prod/*"
