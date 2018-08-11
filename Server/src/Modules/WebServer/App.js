@@ -23,26 +23,26 @@ class App {
   }
 
   _setupRoute() {
-    this.app.get('/render', async (request, response) => {
-
-      const url = 'http://localhost:8081'
-      log(`Start render: ${url}`)
-      const result = await this.crawler.render(url)
-      const color = result.type == 'PageError' ? 'red' : 'green'
-      log(`${url}`, color)
-      log(`Response: ${result.statusCode}, ${result.type}`, color)
-      if(this.config.debug) {
-        log(JSON.stringify(result), 'magenta')
-      }
-
-      response.status(200).json(result)
-    })
-
-    this.app.all('*', (request, response) => {
-      response.sendStatus(400)
-    })
-
+    this.app.get('/render',  (request, response) => this._handleRender(request, response))
+    this.app.all('*', (request, response) => response.sendStatus(400))
     return this.app
+  }
+
+  async _handleRender(request, response) {
+    const url = 'http://localhost:8081/#/'
+    log(`Start render: ${url}`)
+    const result = await this.crawler.render(url)
+    this.logResult(url, result)
+    response.status(200).json(result)
+  }
+
+  logResult(url, result) {
+    const color = result.type == 'PageError' ? 'red' : 'green'
+    log(`${url}`, color)
+    log(`Response: ${result.statusCode}, ${result.type}`, color)
+    if(this.config.debug) {
+      log(JSON.stringify(result), 'magenta')
+    }
   }
 }
 
