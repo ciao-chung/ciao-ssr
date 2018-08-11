@@ -5,5 +5,5 @@
   "cache": {
     "TTL": 60
   },
-  "debug": true
+  "debug": false
 }
