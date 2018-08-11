@@ -44,7 +44,7 @@ We provide a client side library(**Client/SSR.js**) to trigger server side rende
 ```javascript
 import SSR from 'SSR.js'
 
-// when your all async data ready and render
+// when your all async data are ready and render
 SSR.done()
 
 // when your page is in error type
