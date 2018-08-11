@@ -4,14 +4,15 @@ class Crawler {
     this.debug = config.debug == true
     this.timeout = config.timeout || 5000
     this.browser = await puppeteer.launch({ headless: !this.debug })
-    return new Promise(resolve => this.handle(resolve, url))
+    return new Promise(resolve => this._handleRender(resolve, url))
   }
 
-  async handle(resolve, url) {
+  async _handleRender(resolve, url) {
     this.page = await this.browser.newPage()
 
+    // get result if timeout
     this.wait = setTimeout(async () => {
-      const result = await this._PageDone('Timeout')
+      const result = await this._getResult('Timeout')
       resolve(result)
       return
     }, this.timeout)
@@ -23,8 +24,9 @@ class Crawler {
   async _setupPage(url) {
     const self = this
     return new Promise(async(resolve) => {
+      // expose callable function to client side
       self.page.exposeFunction('ServerSideRenderStart', async (type, statusCode) => {
-        const result = await self._PageDone(type, statusCode)
+        const result = await self._getResult(type, statusCode)
         resolve(result)
       })
 
@@ -34,12 +36,12 @@ class Crawler {
         })
       } catch (error) {
         log('page not found', 'red')
-        resolve(await self._PageDone('PageError', 404))
+        resolve(await self._getResult('PageError', 404))
       }
     })
   }
 
-  async _PageDone(type, statusCode = 200) {
+  async _getResult(type, statusCode = 200) {
     if(this.wait) clearTimeout(this.wait)
     const content = await this.page.content()
     this.page.close()

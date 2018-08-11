@@ -44,7 +44,7 @@ class App {
     log(`${url}`, color)
     log(`Response: ${result.statusCode}, ${result.type}`, color)
     if(this.config.debug) {
-      console.log(result)
+      log(JSON.stringify(result), 'magenta')
     }
 
   }
