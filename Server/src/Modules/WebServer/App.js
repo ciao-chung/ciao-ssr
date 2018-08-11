@@ -1,5 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import UrlParser from 'url-parse'
+import UrlRegex from 'url-regex'
 import Crawler from 'Modules/Crawler/Crawler'
 
 class App {
@@ -29,14 +31,37 @@ class App {
   }
 
   async _handleRender(request, response) {
-    const url = 'http://localhost:8081/#/'
+    const url = request.query.url
+    if(!UrlRegex().test(url)) {
+      response.status(400).send('Bad url')
+      return
+    }
+
+    if(!this._isAllowOrigin(url)) {
+      response.status(403).send('Origin not allow')
+      return
+    }
+
     log(`Start render: ${url}`)
     const result = await this.crawler.render(url)
-    this.logResult(url, result)
+    this._logResult(url, result)
     response.status(200).json(result)
   }
 
-  logResult(url, result) {
+  _isValidUrl(text) {
+    if(typeof text != 'string') return false
+    return new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g).test(text)
+  }
+
+  _isAllowOrigin(url) {
+    const origin = new UrlParser(url).origin
+    log(origin, 'yellow')
+    if(typeof this.config.allowOrigin == 'string') return this.config.allowOrigin == origin
+    if(!Array.isArray(this.config.allowOrigin)) return false
+    return this.config.allowOrigin.indexOf(origin) > -1
+  }
+
+  _logResult(url, result) {
     const color = result.type == 'PageError' ? 'red' : 'green'
     log(`${url}`, color)
     log(`Response: ${result.statusCode}, ${result.type}`, color)
