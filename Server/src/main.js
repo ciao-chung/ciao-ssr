@@ -26,7 +26,7 @@ class App {
   async initServer() {
     log('Server start')
     try {
-      this.config = readFileSync('static/config.json', 'utf8')
+      this.config = JSON.parse(readFileSync('static/config.json', 'utf8'))
       global.config = this.config
     } catch (error) {
       log(error, 'red')
@@ -34,8 +34,19 @@ class App {
       return
     }
 
+
+    const url = 'http://127.0.0.1:8081'
+
     this.crawler = Crawler
-    await this.crawler.render('http://127.0.0.1:8081')
+    log(`Start render: ${url}`)
+    const result = await this.crawler.render(url)
+    const color = result.type == 'PageError' ? 'red' : 'green'
+    log(`${url}`, color)
+    log(`Response: ${result.statusCode}, ${result.type}`, color)
+    if(this.config.debug) {
+      console.log(result)
+    }
+
   }
 }
 
