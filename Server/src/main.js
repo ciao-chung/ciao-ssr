@@ -2,8 +2,7 @@ import chalk from 'chalk'
 import { readFileSync } from 'fs'
 import { argv } from 'yargs'
 import moment from 'moment'
-import Crawler from 'Modules/Crawler/Crawler'
-
+import WebServer from 'Modules/WebServer/WebServer'
 class App {
   constructor() {
     global.chalk = chalk
@@ -34,19 +33,7 @@ class App {
       return
     }
 
-
-    const url = 'http://127.0.0.1:8081'
-
-    this.crawler = Crawler
-    log(`Start render: ${url}`)
-    const result = await this.crawler.render(url)
-    const color = result.type == 'PageError' ? 'red' : 'green'
-    log(`${url}`, color)
-    log(`Response: ${result.statusCode}, ${result.type}`, color)
-    if(this.config.debug) {
-      log(JSON.stringify(result), 'magenta')
-    }
-
+    new WebServer()
   }
 }
 

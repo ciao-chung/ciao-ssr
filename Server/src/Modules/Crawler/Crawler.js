@@ -1,9 +1,12 @@
 import puppeteer from 'puppeteer'
 class Crawler {
-  async render(url) {
+  async init(config) {
     this.debug = config.debug == true
     this.timeout = config.timeout || 5000
     this.browser = await puppeteer.launch({ headless: !this.debug })
+  }
+
+  async render(url) {
     return new Promise(resolve => this._handleRender(resolve, url))
   }
 
