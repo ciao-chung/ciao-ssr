@@ -6,7 +6,7 @@
 
 > static/config.json
 
-** example**
+**example**
 
 ```json
 {
@@ -70,7 +70,7 @@ sudo a2ensite example.com.conf
 sudo service apache2 restart
 ```
 
-## via PM2
+## Manage service with PM2
 
 [PM2](http://pm2.keymetrics.io) is an advanced Node.js process manager
 
