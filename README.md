@@ -1,6 +1,6 @@
 # Puppeteer Server Side Render
 
-> A server side render service base on puppeteer
+> A server side render service based on puppeteer
 
 ## Configuration
 
