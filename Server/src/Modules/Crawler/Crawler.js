@@ -33,13 +33,11 @@ class Crawler {
         resolve(result)
       })
 
-      try {
-        await self.page.goto(url, {
-          waitUntil: 'networkidle2',
-        })
-      } catch (error) {
+      const response = await self.page.goto(url)
+      if(!response || !response.ok()) {
         log('page not found', 'red')
         resolve(await self._getResult('PageError', 404))
+        return
       }
     })
   }
