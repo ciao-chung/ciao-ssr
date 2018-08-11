@@ -6,7 +6,7 @@
 
 > static/config.json
 
-**example**
+**Example**
 
 ```json
 {
@@ -33,6 +33,25 @@
 
 ```bash
 npm run start
+```
+
+## Client side
+
+We provide a client side library(**Client/SSR.js**) to trigger server side render service
+
+**Example**
+
+```javascript
+import SSR from 'SSR.js'
+
+// when your all async data ready and render
+SSR.done()
+
+// when your page is in error type
+SSR.error()
+
+// when you want to custom error status code in error page
+SSR.error(403)
 ```
 
 ## Apache configuration
