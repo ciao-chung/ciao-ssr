@@ -47,10 +47,9 @@ class App {
     }
 
     // get result from cache
-    const cacheResult = this.cache.get(url)
+    const cacheResult = await this.cache.get(url)
     let result
-    console.warn(cacheResult)
-
+    
     if(cacheResult) {
       log(`Get cache result: ${url}`)
       result = cacheResult
