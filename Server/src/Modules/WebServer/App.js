@@ -3,11 +3,15 @@ import bodyParser from 'body-parser'
 import UrlParser from 'url-parse'
 import UrlRegex from 'url-regex'
 import Crawler from 'Modules/Crawler/Crawler'
+import Cache from 'Modules/Cache/Cache'
 
 class App {
   async init(config) {
     this.config = config
     this.crawler = Crawler
+    this.cache = Cache
+
+    await this.cache.init(this.config)
     await this.crawler.init(this.config)
 
     this.app = express()
@@ -42,11 +46,26 @@ class App {
       return
     }
 
-    log(`Start render: ${url}`)
-    const result = await this.crawler.render(url)
+    // get result from cache
+    const cacheResult = this.cache.get(url)
+    let result
+    console.warn(cacheResult)
+
+    if(cacheResult) {
+      log(`Get cache result: ${url}`)
+      result = cacheResult
+    }
+
+    else {
+      log(`Start render: ${url}`)
+      result = await this.crawler.render(url)
+      this.cache.set(url, result)
+    }
+
     this._logResult(url, result)
     response.status(200).json(result)
   }
+
 
   _isValidUrl(text) {
     if(typeof text != 'string') return false
@@ -55,7 +74,6 @@ class App {
 
   _isAllowOrigin(url) {
     const origin = new UrlParser(url).origin
-    log(origin, 'yellow')
     if(this.config.allowOrigin == '*') return true
     if(typeof this.config.allowOrigin == 'string') return this.config.allowOrigin == origin
     if(!Array.isArray(this.config.allowOrigin)) return false

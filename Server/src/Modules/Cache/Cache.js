@@ -8,7 +8,7 @@ class Cache {
       options: {
         ttl: this._getCacheConfigProperty('ttl')*1000,
         maxsize: this._getCacheConfigProperty('maxsize')*1000,
-        path:'diskcache',
+        path:'dist/cache',
         preventfill:true,
       }
     })
