@@ -8,7 +8,7 @@ class Cache {
       options: {
         ttl: this._getCacheConfigProperty('ttl')*1000,
         maxsize: this._getCacheConfigProperty('maxsize')*1000,
-        path:'/home/ciao/桌面/cache',
+        path: 'dist/cache',
         preventfill:true,
       }
     })
@@ -24,7 +24,7 @@ class Cache {
   async get(key) {
     const self = this
     return new Promise(resolve => {
-      self.cacheManager.get(key, (error, result) => resolve(result))
+      self.cacheManager.get(key, (error, result) => resolve(!error ? result : null))
     })
   }
 

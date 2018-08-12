@@ -49,7 +49,7 @@ class App {
     // get result from cache
     const cacheResult = await this.cache.get(url)
     let result
-    
+
     if(cacheResult) {
       log(`Get cache result: ${url}`)
       result = cacheResult
