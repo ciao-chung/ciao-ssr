@@ -25,8 +25,9 @@
 * host(optional): **String**, host of Node.js express app, default is 'localhost'.
 * allowOrigin(required): **String/Array**, allow origin, you can set it as * if you don't want to limit any origin.
 * cache(optional): **Object**, configure cache feature.
-  * ttl(required): **Number**, time to life of cache(minutes).
-  * maxsize(required): **Number**, maxsize of cache file on disk(Kilobyte).
+  * ttl(required): **Number**, time to life of cache(minutes), default is 1 minute.
+  * maxsize(required): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
+  * path(optional): **String**, cache file store path, default is 'cache'.
 * debug(optional): **Boolean**, debug mode, it will open chrome without headless mode. 
 
 ## Start server

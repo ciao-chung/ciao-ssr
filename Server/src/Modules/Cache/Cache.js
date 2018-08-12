@@ -6,9 +6,9 @@ class Cache {
     this.cacheManager = cacheManager.caching({
       store: fsStore,
       options: {
-        ttl: this._getCacheConfigProperty('ttl')*1000,
-        maxsize: this._getCacheConfigProperty('maxsize')*1000,
-        path: 'dist/cache',
+        ttl: this._getCacheConfigProperty('ttl')*60 || 1,
+        maxsize: this._getCacheConfigProperty('maxsize')*1000 || 1000*1000,
+        path: this._getCacheConfigProperty('path') || 'cache',
         preventfill:true,
       }
     })
