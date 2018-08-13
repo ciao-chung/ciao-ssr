@@ -2,7 +2,7 @@
 
 > A server side render service based on puppeteer
 
-This is a puppeteer(chrome headless) side render service.
+This is a puppeteer(chrome headless) server side render service.
 
 ## Feature
 
