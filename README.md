@@ -27,33 +27,17 @@ Step | Role | File path| Do
 4 | Response | :x: | The http server of this service will return response with render result.
 5 | Middleware(ssr.php) | dist/ssr.php | Render the result to crawler.
 
-## Configuration
+## Install Google Chrome
 
-> Prod/Server/static/config.json
+> Skip this step if you has install chrome browser
 
-**Example**
-
-```json
-{
-  "allowOrigin": [
-    "http://localhost:8081", "https://foo.bar"
-  ],
-  "cache": {
-    "ttl": 60,
-    "maxsize": 1000
-  },
-  "debug": true
-}
+```bash
+sudo apt-get install libxss1 libappindicator1 libindicator7 -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+sudo apt-get install -f
+rm google-chrome-stable_current_amd64.deb
 ```
-
-* port(optional): **Number**, port of Node.js express app, default is 3000.
-* host(optional): **String**, host of Node.js express app, default is 'localhost'.
-* allowOrigin(required): **String/Array**, allow origin, you can set it as * if you don't want to limit any origin.
-* cache(optional): **Object**, configure cache feature.
-  * ttl(optional): **Number**, time to life of cache(minutes), default is 1 minute.
-  * maxsize(optional): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
-  * path(optional): **String**, cache file store path, default is 'cache'.
-* debug(optional): **Boolean**, debug mode, it will open chrome without headless mode. 
 
 ## Start service
 
@@ -86,6 +70,34 @@ cp config.example.json config.json
 ```bash
 npm run start
 ```
+
+## Configuration
+
+> Prod/Server/static/config.json
+
+**Example**
+
+```json
+{
+  "allowOrigin": [
+    "http://localhost:8081", "https://foo.bar"
+  ],
+  "cache": {
+    "ttl": 60,
+    "maxsize": 1000
+  },
+  "debug": true
+}
+```
+
+* port(optional): **Number**, port of Node.js express app, default is 3000.
+* host(optional): **String**, host of Node.js express app, default is 'localhost'.
+* allowOrigin(required): **String/Array**, allow origin, you can set it as * if you don't want to limit any origin.
+* cache(optional): **Object**, configure cache feature.
+  * ttl(optional): **Number**, time to life of cache(minutes), default is 1 minute.
+  * maxsize(optional): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
+  * path(optional): **String**, cache file store path, default is 'cache'.
+* debug(optional): **Boolean**, debug mode, it will open chrome without headless mode. 
 
 ## Client side(web)
 
