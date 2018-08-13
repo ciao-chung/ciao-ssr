@@ -72,8 +72,9 @@ if(argv.prod) {
       `rm -rf ${path.resolve(projectRoot, 'Prod/Server/dist')}`,
     ],
     onBuildEnd: [
-      `cp -r ${path.resolve(__dirname, '../dist')} ${path.resolve(projectRoot, 'Prod/Server')}`,
-      `mv ${path.resolve(projectRoot, 'Prod/Server/dist/static')} ${path.resolve(projectRoot, 'Prod/Server')}`
+      `cp -r ${path.resolve(__dirname, '../dist/server.js')} ${path.resolve(projectRoot, 'Prod/Server')}`,
+      `cp -r ${path.resolve(__dirname, '../dist/static')} ${path.resolve(projectRoot, 'Prod/Server')}`,
+      `cp ${path.resolve(projectRoot, 'Prod/Server/static/config.json')} ${path.resolve(projectRoot, 'Prod/Server/static/config.example.json')}`,
     ],
   }))
 }
