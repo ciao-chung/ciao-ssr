@@ -9,6 +9,12 @@ This is a puppeteer(chrome headless) side render service.
 * Can limit render origin
 * Cache
 
+## Dependencies
+
+* [express](https://github.com/expressjs/express)
+* [cache-manager](https://github.com/BryanDonovan/node-cache-manager)
+* [puppeteer](https://github.com/GoogleChrome/puppeteer)
+
 ## Installation
 
 **npm**

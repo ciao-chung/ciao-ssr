@@ -56,6 +56,7 @@ if(argv.prod) {
     onBuildEnd: [
       `cp -r ${path.resolve(__dirname, '../dist')} ${path.resolve(projectRoot, 'Publish')}`,
       `cp ${path.resolve(projectRoot, 'README.md')} ${path.resolve(projectRoot, 'Publish')}`,
+      `cp ${path.resolve(projectRoot, 'LICENSE.md')} ${path.resolve(projectRoot, 'Publish')}`,
       `cp ${path.resolve(projectRoot, 'Client/copyfile/.htaccess')} ${path.resolve(projectRoot, 'Publish/dist')}`,
       `cp ${path.resolve(projectRoot, 'Client/copyfile/ssr.php')} ${path.resolve(projectRoot, 'Publish/dist')}`,
     ],
