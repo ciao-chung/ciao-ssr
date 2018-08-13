@@ -1,9 +1,13 @@
+const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
 const chalk = require('chalk')
+const argv = require('yargs').argv
 const { resolve } = require('path')
-const config = {
+const projectRoot = path.resolve(__dirname, '../../')
+let webpackConfig = {
   target: 'node',
   context: resolve(__dirname, '../'),
   externals: [nodeExternals()],
@@ -46,7 +50,20 @@ const config = {
   ],
 }
 
-webpack(config, function (err, stats) {
+
+if(argv.prod) {
+  webpackConfig.plugins.push(new WebpackShellPlugin({
+    onBuildEnd: [
+      `cp -r ${path.resolve(__dirname, '../dist')} ${path.resolve(projectRoot, 'Publish')}`,
+      `cp ${path.resolve(projectRoot, 'README.md')} ${path.resolve(projectRoot, 'Publish')}`,
+      `cp ${path.resolve(projectRoot, 'Client/copyfile/.htaccess')} ${path.resolve(projectRoot, 'Publish/dist')}`,
+      `cp ${path.resolve(projectRoot, 'Client/copyfile/ssr.php')} ${path.resolve(projectRoot, 'Publish/dist')}`,
+    ],
+  }))
+}
+
+
+webpack(webpackConfig, function (err, stats) {
   if (err) throw err
   if (stats.hasErrors()) {
     console.log(chalk.red('  Build failed with errors.\n'))

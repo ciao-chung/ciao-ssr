@@ -65,4 +65,12 @@ if (config.build.bundleAnalyzerReport) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
+if(argv.prod) {
+  webpackConfig.plugins.push(new WebpackShellPlugin({
+    onBuildStart: [
+      `rm -rf ${path.resolve(__dirname, '../../Publish/dist')}`,
+    ],
+  }))
+}
+
 module.exports = webpackConfig
