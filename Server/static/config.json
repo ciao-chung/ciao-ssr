@@ -5,6 +5,5 @@
   "cache": {
     "ttl": 600,
     "maxsize": 1000
-  },
-  "debug": true
+  }
 }

@@ -15,20 +15,6 @@ This is a puppeteer(chrome headless) server side render service.
 * [cache-manager](https://github.com/BryanDonovan/node-cache-manager)
 * [puppeteer](https://github.com/GoogleChrome/puppeteer)
 
-## Installation
-
-**npm**
-
-```bash
-npm install puppeteer-server-side-render --save
-```
-
-**yarn**
-
-```bash
-yarn add puppeteer-server-side-render
-```
-
 ## How server side render work?
 
 Before use this service, you must know how server side render work.
@@ -43,7 +29,7 @@ Step | Role | File path| Do
 
 ## Configuration
 
-> static/config.json
+> Prod/Server/static/config.json
 
 **Example**
 
@@ -69,19 +55,65 @@ Step | Role | File path| Do
   * path(optional): **String**, cache file store path, default is 'cache'.
 * debug(optional): **Boolean**, debug mode, it will open chrome without headless mode. 
 
-## Start server
+## Start service
 
-> In app folder
+**Clone repository**
+
+```bash
+git clone git@github.com:ciao-chung/puppeteer-server-side-render.git
+```
+
+**Go into Server folder and install node modules**
+
+```bash
+cd Prod/Server
+
+yarn
+```
+
+**Setup config by coping the example config**
+
+> In Prod/Server/static
+
+```bash
+cp config.example.json config.json
+```
+
+**Start server**
+
+> In Prod/Server
 
 ```bash
 npm run start
 ```
 
-## Client side
+## Client side(web)
 
-We provide a client side library(**Client/SSR.js**) to trigger server side render service
+**Installation**
 
-**Example**
+**npm**
+
+```bash
+npm install puppeteer-server-side-render --save
+```
+
+**yarn**
+
+```bash
+yarn add puppeteer-server-side-render
+```
+
+**Copy proxy(.htaccess) and middleware(ssr.php) to web root**
+
+> You can find them in puppeteer-server-side-render in node_modules
+
+```bash
+cd node_modules/puppeteer-server-side-render/dist/
+```
+
+**Use client library in web**
+
+We provide a client side library to trigger server side render service
 
 ```javascript
 import SSR from 'puppeteer-server-side-render'
