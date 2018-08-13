@@ -9,18 +9,6 @@ This is a puppeteer(chrome headless) side render service.
 * Can limit render origin
 * Cache
 
-## How server side render work?
-
-Before use this service, you must know how server side render work.
-
-Step | Role | Do
------|-----|-----
-1 | Proxy(.htaccess) | Detect origin is crawler or not by checking user agent. 
-2 | Middleware(ssr.php) | Send the request with page's url to this service's http server.
-3 | Puppeteer | If origin is valid, it will trigger server side render crawler(puppeteer) start.
-4 | Response | The http server of this service will return response with render result.
-5 | Middleware(seo.php) | Render the result to crawler.
-
 ## Installation
 
 **npm**
@@ -34,6 +22,18 @@ npm install puppeteer-server-side-render --save
 ```bash
 yarn add puppeteer-server-side-render
 ```
+
+## How server side render work?
+
+Before use this service, you must know how server side render work.
+
+Step | Role | File path| Do
+-----|-----|-----|-----
+1 | Proxy(.htaccess) | dist/.htaccess | Detect origin is crawler or not by checking user agent. 
+2 | Middleware(ssr.php) | dist/ssr.php | Send the request with page's url to this service's http server.
+3 | Puppeteer | | If origin is valid, it will trigger server side render crawler(puppeteer) start.
+4 | Response | :x: | The http server of this service will return response with render result.
+5 | Middleware(ssr.php) | dist/ssr.php | Render the result to crawler.
 
 ## Configuration
 
