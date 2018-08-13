@@ -1,0 +1,22 @@
+{
+  "name": "puppeteer-server-side-render",
+  "version": "1.0.0",
+  "description": "A server side render service based on puppeteer",
+  "main": "dist/client.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciao-chung/puppeteer-server-side-render.git"
+  },
+  "keywords": [
+    "chrome headless",
+    "puppeteer",
+    "server side render",
+    "ssr"
+  ],
+  "author": "Ciao Chung <ciao0958@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ciao-chung/puppeteer-server-side-render/issues"
+  },
+  "homepage": "https://github.com/ciao-chung/puppeteer-server-side-render#readme"
+}

@@ -7,6 +7,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const projectRoot = path.resolve(__dirname, '../../')
 const argv = require('yargs').argv
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -68,7 +69,11 @@ if (config.build.bundleAnalyzerReport) {
 if(argv.prod) {
   webpackConfig.plugins.push(new WebpackShellPlugin({
     onBuildStart: [
-      `rm -rf ${path.resolve(__dirname, '../../Publish/dist')}`,
+      `rm -rf ${path.resolve(projectRoot, 'Prod/Server/dist')}`,
+    ],
+    onBuildEnd: [
+      `cp -r ${path.resolve(__dirname, '../dist')} ${path.resolve(projectRoot, 'Prod/Server')}`,
+      `mv ${path.resolve(projectRoot, 'Prod/Server/dist/static')} ${path.resolve(projectRoot, 'Prod/Server')}`
     ],
   }))
 }

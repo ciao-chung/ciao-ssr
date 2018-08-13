@@ -9,9 +9,9 @@
     "unit": "node node_modules/mocha-webpack/bin/mocha-webpack test/unit/specs/**/*.js --webpack-config build/webpack.test.conf.js",
     "unit:single": "node node_modules/mocha-webpack/bin/mocha-webpack --webpack-config build/webpack.test.conf.js",
     "start": "node dist/server.js",
-    "build": "node build/build.js; npm run build:client",
-    "build:client": "node build/build-client.js",
-    "prod": "node build/build.js --prod; node build/build-client.js --prod"
+    "build": "node build/build.js",
+    "prod:client": "node build/build-client.js --prod",
+    "prod:server": "node build/build.js --prod"
   },
   "devDependencies": {
     "babel-loader": "^7.1.1",
