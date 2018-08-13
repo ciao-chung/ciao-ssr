@@ -2,6 +2,39 @@
 
 > A server side render service based on puppeteer
 
+This is a puppeteer(chrome headless) side render service.
+
+## Feature
+
+* Can limit render origin
+* Cache
+
+## How server side render work?
+
+Before use this service, you must know how server side render work.
+
+Step | Role | Do
+-----|-----|-----
+1 | Proxy(.htaccess) | Detect origin is crawler or not by checking user agent. 
+2 | Middleware(ssr.php) | Send the request with page's url to this service's http server.
+3 | Puppeteer | If origin is valid, it will trigger server side render crawler(puppeteer) start.
+4 | Response | The http server of this service will return response with render result.
+5 | Middleware(seo.php) | Render the result to crawler.
+
+## Installation
+
+**npm**
+
+```bash
+npm install puppeteer-server-side-render --save
+```
+
+**yarn**
+
+```bash
+yarn add puppeteer-server-side-render
+```
+
 ## Configuration
 
 > static/config.json
@@ -25,12 +58,14 @@
 * host(optional): **String**, host of Node.js express app, default is 'localhost'.
 * allowOrigin(required): **String/Array**, allow origin, you can set it as * if you don't want to limit any origin.
 * cache(optional): **Object**, configure cache feature.
-  * ttl(required): **Number**, time to life of cache(minutes), default is 1 minute.
-  * maxsize(required): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
+  * ttl(optional): **Number**, time to life of cache(minutes), default is 1 minute.
+  * maxsize(optional): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
   * path(optional): **String**, cache file store path, default is 'cache'.
 * debug(optional): **Boolean**, debug mode, it will open chrome without headless mode. 
 
 ## Start server
+
+> In app folder
 
 ```bash
 npm run start
@@ -43,7 +78,7 @@ We provide a client side library(**Client/SSR.js**) to trigger server side rende
 **Example**
 
 ```javascript
-import SSR from 'SSR.js'
+import SSR from 'puppeteer-server-side-render'
 
 // when your all async data are ready and render
 SSR.done()
@@ -92,7 +127,9 @@ sudo service apache2 restart
 
 ## Manage service with PM2
 
-[PM2](http://pm2.keymetrics.io) is an advanced Node.js process manager
+[PM2](http://pm2.keymetrics.io) is an advanced Node.js process manager.
+
+You can manage server side render service easily by using PM2.
 
 **Installation**
 

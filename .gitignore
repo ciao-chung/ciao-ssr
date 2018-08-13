@@ -20,7 +20,7 @@ static/config.json
 cache/*
 !./cache/.gitkeep
 
-publish/*
-!publish/package.json
-!publish/yarn.lock
-!publish/.npmignore
+Publish/*
+!Publish/package.json
+!Publish/yarn.lock
+!Publish/.npmignore

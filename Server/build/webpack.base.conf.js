@@ -11,7 +11,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   externals: [nodeExternals()],
   entry: {
-    app: ['./src/main.js']
+    server: ['./src/main.js'],
   },
   node: {
     __dirname: true,

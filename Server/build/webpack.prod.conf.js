@@ -5,7 +5,8 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const WebpackShellPlugin = require('webpack-shell-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const argv = require('yargs').argv
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -15,7 +16,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: 'app.js',
+    filename: '[name].js',
     libraryTarget: 'umd',
   },
   plugins: [
@@ -36,6 +37,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
+
+    new UglifyJsPlugin(),
   ]
 })
 
@@ -60,26 +63,6 @@ if (config.build.productionGzip) {
 if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-}
-
-// production mode, copy bundled app to prod folder
-if(argv.prod) {
-  webpackConfig.plugins.push(new WebpackShellPlugin({
-    onBuildEnd: [
-      'cp dist/app.js prod',
-    ],
-  }))
-
-  // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
-  webpackConfig.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
-    })
-  )
 }
 
 module.exports = webpackConfig

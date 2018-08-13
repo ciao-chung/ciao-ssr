@@ -2,9 +2,9 @@
   "name": "puppeteer-server-side-render",
   "version": "1.0.0",
   "description": "A server side render service based on puppeteer",
-  "main": "dist/app.js",
+  "main": "dist/client.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",

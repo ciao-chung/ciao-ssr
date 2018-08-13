@@ -16,6 +16,5 @@ selenium-debug.log
 *.njsproj
 *.sln
 
-static/config.json
 cache/*
 !./cache/.gitkeep
