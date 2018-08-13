@@ -31,7 +31,7 @@ Step | Role | File path| Do
 -----|-----|-----|-----
 1 | Proxy(.htaccess) | dist/.htaccess | Detect origin is crawler or not by checking user agent. 
 2 | Middleware(ssr.php) | dist/ssr.php | Send the request with page's url to this service's http server.
-3 | Puppeteer | | If origin is valid, it will trigger server side render crawler(puppeteer) start.
+3 | Puppeteer | :x: | If origin is valid, it will trigger server side render crawler(puppeteer) start.
 4 | Response | :x: | The http server of this service will return response with render result.
 5 | Middleware(ssr.php) | dist/ssr.php | Render the result to crawler.
 
