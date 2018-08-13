@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-server-side-render",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A server side render service based on puppeteer",
   "main": "dist/client.js",
   "repository": {
