@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A server side render service based on puppeteer",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "cache:clean": "rm -rf cache"
   },
   "repository": {
     "type": "git",

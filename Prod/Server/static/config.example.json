@@ -3,7 +3,7 @@
     "http://localhost:8081"
   ],
   "cache": {
-    "ttl": 600,
+    "ttl": 300,
     "maxsize": 1000
   }
 }
