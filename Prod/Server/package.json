@@ -1,6 +1,7 @@
 {
   "name": "puppeteer-server-side-render-service",
   "version": "1.0.0",
+  "private": true,
   "description": "A server side render service based on puppeteer",
   "scripts": {
     "start": "node server.js",

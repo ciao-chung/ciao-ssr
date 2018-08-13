@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "base-nodejs webpack app",
   "author": "Ciao Chung <ciao0958@gmail.com>",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "npm run build; npm run start",
