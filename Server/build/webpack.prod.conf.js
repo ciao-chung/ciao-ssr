@@ -70,11 +70,14 @@ if(argv.prod) {
   webpackConfig.plugins.push(new WebpackShellPlugin({
     onBuildStart: [
       `rm -rf ${path.resolve(projectRoot, 'Prod/Server/dist')}`,
+      `rm -rf ${path.resolve(projectRoot, 'Prod/Server/cache')}`,
     ],
     onBuildEnd: [
       `cp -r ${path.resolve(__dirname, '../dist/server.js')} ${path.resolve(projectRoot, 'Prod/Server')}`,
       `cp -r ${path.resolve(__dirname, '../dist/static')} ${path.resolve(projectRoot, 'Prod/Server')}`,
       `cp ${path.resolve(projectRoot, 'Prod/Server/static/config.json')} ${path.resolve(projectRoot, 'Prod/Server/static/config.example.json')}`,
+      `mkdir ${path.resolve(projectRoot, 'Prod/Server/cache')}`,
+      `touch ${path.resolve(projectRoot, 'Prod/Server/cache/.gitkeep')}`,
     ],
   }))
 }
