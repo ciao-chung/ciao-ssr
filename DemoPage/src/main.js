@@ -2,13 +2,13 @@ import Vue from 'vue'
 import App from 'App'
 import router from 'router'
 import store from 'Store/Store'
-import SSR from '../../Client/SSR.js'
+import ServerSideRenderClient from '../../Client/SSR.js'
 
 Vue.config.productionTip = false
 
 import $ from 'jquery'
 window.self.$ = $
-window.SSR = SSR
+window.SSR = ServerSideRenderClient({ debug: true })
 
 import VueMoment from 'vue-moment'
 Vue.use(VueMoment)

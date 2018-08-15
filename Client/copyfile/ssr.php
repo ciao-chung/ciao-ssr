@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_SCHEME"] == 'https' && $_SERVER["SERVER_PORT"] != 443){
     $port = ':'.$_SERVER["SERVER_PORT"];
 }
 $requestUrl = $host.$port.$_SERVER['REQUEST_URI'];
-$result = file_get_contents($ssrHost.'/'.$requestUrl);
+$result = json_decode(file_get_contents($ssrHost.'/render?url='.$requestUrl), true);
 
 if(!$result || !$result['statusCode']) {
     header("HTTP/1.0 404 Not Found");

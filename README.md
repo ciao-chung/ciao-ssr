@@ -93,6 +93,7 @@ npm run start
 * port(optional): **Number**, port of Node.js express app, default is 3000.
 * host(optional): **String**, host of Node.js express app, default is 'localhost'.
 * allowOrigin(required): **String/Array**, allow origin, you can set it as * if you don't want to limit any origin.
+* timeout(optional): **Number**, if client don't trigger server side render service in this timeout, crawler will auto get page result and response, default is 5000ms, at most 15000ms.
 * cache(optional): **Object**, configure cache feature.
   * ttl(optional): **Number**, time to life of cache(minutes), default is 1 minute.
   * maxsize(optional): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
@@ -128,7 +129,8 @@ cd node_modules/puppeteer-server-side-render/dist/
 We provide a client side library to trigger server side render service
 
 ```javascript
-import SSR from 'puppeteer-server-side-render'
+import ServerSideRenderClient from 'puppeteer-server-side-render'
+ServerSideRenderClient()
 
 // when your all async data are ready and render
 SSR.done()

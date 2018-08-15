@@ -33,7 +33,17 @@ class Crawler {
         resolve(result)
       })
 
-      const response = await self.page.goto(url)
+      let response
+      try {
+        response = await self.page.goto(url, {
+          timeout: 15000,
+        })
+      } catch(error) {
+        log('page not found', 'red')
+        resolve(await self._getResult('PageError', 404))
+        return
+      }
+
       if(!response || !response.ok()) {
         log('page not found', 'red')
         resolve(await self._getResult('PageError', 404))
