@@ -17,7 +17,7 @@ selenium-debug.log
 
 static/config.json
 cache/*
-!./cache/.gitkeep
+!cache/.gitkeep
 
 Prod/Client*
 !Prod/Client/package.json

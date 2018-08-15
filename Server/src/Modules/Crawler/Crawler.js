@@ -31,6 +31,7 @@ class Crawler {
       self.page.exposeFunction('ServerSideRenderStart', async (type, statusCode) => {
         const result = await self._getResult(type, statusCode)
         resolve(result)
+        return
       })
 
       let response
