@@ -39,13 +39,13 @@ class Crawler {
           timeout: 15000,
         })
       } catch(error) {
-        log('page not found', 'red')
+        log('*!page not found', 'red')
         resolve(await self._getResult('PageError', 404))
         return
       }
 
       if(!response || !response.ok()) {
-        log('page not found', 'red')
+        log('*!page not found', 'red')
         resolve(await self._getResult('PageError', 404))
         return
       }
@@ -54,8 +54,14 @@ class Crawler {
 
   async _getResult(type, statusCode = 200) {
     if(this.wait) clearTimeout(this.wait)
-    const content = await this.page.content()
-    this.page.close()
+    let content = ''
+    try {
+      content = await this.page.content()
+      this.page.close()
+    } catch(error) {
+      log(`*!${error}`, 'red')
+    }
+
     return {
       statusCode,
       type,

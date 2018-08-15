@@ -35,7 +35,14 @@ class App {
   }
 
   async _handleRender(request, response) {
-    const url = request.query.url
+    let url
+    try {
+      url = request.originalUrl.split('/render?url=')[1]
+    } catch(error) {
+      response.status(400).send('Bad url')
+      return
+    }
+
     if(!UrlRegex().test(url)) {
       response.status(400).send('Bad url')
       return
@@ -51,12 +58,12 @@ class App {
     let result
 
     if(cacheResult) {
-      log(`Get cache result: ${url}`)
+      log(`*Get cache result: ${url}`)
       result = cacheResult
     }
 
     else {
-      log(`Start render: ${url}`)
+      log(`*Start render: ${url}`)
       result = await this.crawler.render(url)
       this.cache.set(url, result)
     }
@@ -81,8 +88,7 @@ class App {
 
   _logResult(url, result) {
     const color = result.type == 'PageError' ? 'red' : 'green'
-    log(`${url}`, color)
-    log(`Response: ${result.statusCode}, ${result.type}`, color)
+    log(`Response: [ ${result.statusCode} ] \t [ ${result.type} ] \t [ ${url} ]`, color)
     if(this.config.debug) {
       log(JSON.stringify(result), 'magenta')
     }
