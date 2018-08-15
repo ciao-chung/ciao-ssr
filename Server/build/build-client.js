@@ -60,6 +60,7 @@ if(argv.prod) {
       `mkdir ${path.resolve(projectRoot, 'Prod/Client/dist')}`,
       `cp ${path.resolve(projectRoot, 'README.md')} ${path.resolve(projectRoot, 'Prod/Client')}`,
       `cp ${path.resolve(projectRoot, 'LICENSE.md')} ${path.resolve(projectRoot, 'Prod/Client')}`,
+      `cp ${path.resolve(projectRoot, 'Server/dist/client.js')} ${path.resolve(projectRoot, 'Prod/Client/dist')}`,
       `cp ${path.resolve(projectRoot, 'Client/copyfile/.htaccess')} ${path.resolve(projectRoot, 'Prod/Client/dist')}`,
       `cp ${path.resolve(projectRoot, 'Client/copyfile/ssr.php')} ${path.resolve(projectRoot, 'Prod/Client/dist')}`,
     ],
