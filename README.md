@@ -19,6 +19,8 @@ This is a puppeteer(chrome headless) server side render service.
 
 Before use this service, you must know how server side render work.
 
+<img src="https://goo.gl/8iG7cB" style="width: 800px; height: 600px; max-width: 100%">
+
 Step | Role | File path| Do
 -----|-----|-----|-----
 1 | Proxy(.htaccess) | dist/.htaccess | Detect origin is crawler or not by checking user agent. 
@@ -26,6 +28,18 @@ Step | Role | File path| Do
 3 | Puppeteer | :x: | If origin is valid, it will trigger server side render crawler(puppeteer) start.
 4 | Response | :x: | The http server of this service will return response with render result.
 5 | Middleware(ssr.php) | dist/ssr.php | Render the result to crawler.
+
+
+**Icon Credit**
+
+- **Person** icon made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [www.flaticon.com](https://www.flaticon.com)
+- **SPA** icon made by [Smashicons](https://smashicons.com) from [www.flaticon.com](https://www.flaticon.com)
+- **Middleware** icon made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com)
+- **Crawler** icon made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com)
+- **Proxy** icon made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com)
+- **SSR Server** icon made by [Nhor Phai](https://www.flaticon.com/authors/nhor-phai) from [www.flaticon.com](https://www.flaticon.com)
+- **Chrome** icon made by [Pixel perfect](https://icon54.com) from [www.flaticon.com](https://www.flaticon.com)
+
 
 ## Install Google Chrome
 
