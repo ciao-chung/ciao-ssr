@@ -112,7 +112,8 @@ npm run start
   * ttl(optional): **Number**, time to life of cache(minutes), default is 1 minute.
   * maxsize(optional): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
   * path(optional): **String**, cache file store path, default is 'cache'.
-* debug(optional): **Boolean**, debug mode, it will open chrome without headless mode. 
+* debug(optional): **Boolean**, debug mode, it will open chrome without headless mode.
+* launchOptions(optional): **Object**, you can setup any custom puppeteer [launch option](https://goo.gl/zoshDo) by this property 
 
 ## Client side(web)
 

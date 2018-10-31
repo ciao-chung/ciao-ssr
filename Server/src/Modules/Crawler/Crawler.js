@@ -3,7 +3,11 @@ class Crawler {
   async init(config) {
     this.debug = config.debug == true
     this.timeout = config.timeout || 5000
-    this.browser = await puppeteer.launch({ headless: !this.debug })
+    const customLaunchOptions = typeof config.launchOptions == 'object' ? config.launchOptions : {}
+    this.browser = await puppeteer.launch({
+      headless: !this.debug,
+      ...customLaunchOptions,
+    })
   }
 
   async render(url) {
