@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer'
+import child_process from 'child_process'
 class Crawler {
   async init(config) {
     this.debug = config.debug == true
@@ -8,6 +9,22 @@ class Crawler {
       headless: !this.debug,
       ...customLaunchOptions,
     })
+
+    this.browser.on('disconnected', this._handleBrowserDisconnected)
+  }
+
+  async _handleBrowserDisconnected() {
+    const processPid = process.pid
+    log(`Handle Browser Disconnected, Process: ${processPid}`, 'red')
+    setTimeout(() => {
+      child_process.exec(`kill -9 ${processPid}`, (error, stdout, stderr) => {
+        if (error) {
+          log(`Process Kill Error: ${error}`, 'red')
+        }
+
+        log(`Process Kill Success. stdout: ${stdout} stderr:${stderr}`, 'red')
+      })
+    }, 500)
   }
 
   async render(url) {
