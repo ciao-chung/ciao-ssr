@@ -19,7 +19,7 @@ This is a puppeteer(chrome headless) server side render service.
 
 Before use this service, you must know how server side render work.
 
-<img src="https://goo.gl/8iG7cB" style="width: 800px; height: 600px; max-width: 100%">
+<img src="https://goo.gl/ioZGex" style="width: 800px; height: 600px; max-width: 100%">
 
 Step | Role | File path| Do
 -----|-----|-----|-----
