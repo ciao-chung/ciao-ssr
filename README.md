@@ -59,8 +59,6 @@ yarn global add ciao-ssr
 
 **Start server**
 
-> In Prod/Server
-
 ```bash
 ciao-ssr --config=/file-to-your/config.json
 ```
