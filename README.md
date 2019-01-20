@@ -187,9 +187,10 @@ SSR.error(403)
 
 ## Apache configuration
 
-**Enable apache proxy/proxy_http modules**
+**Enable apache rewrite/proxy/proxy_http modules**
 
 ```bash
+sudo a2enmod rewrite
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 sudo service apache2 restart
