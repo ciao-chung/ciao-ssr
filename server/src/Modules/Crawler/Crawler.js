@@ -1,14 +1,11 @@
 const puppeteer = require('puppeteer')
 const child_process = require('child_process')
-const chromiumBinary = require('chromium-binary')
-const executablePath = chromiumBinary.path
 
 class Crawler {
   async init(config) {
     this.debug = config.debug == true
     this.timeout = config.timeout || 5000
     const customLaunchOptions = typeof config.launchOptions == 'object' ? config.launchOptions : {}
-    log(`*Chrome executablePath: ${executablePath}`, 'green')
     this.browser = await puppeteer.launch({
       headless: !this.debug,
       ...customLaunchOptions,
