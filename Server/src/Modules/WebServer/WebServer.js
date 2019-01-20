@@ -1,7 +1,7 @@
-import http from 'http'
-import detectPort from 'detect-port'
-import killPort from 'kill-port'
-import App from 'Modules/WebServer/App.js'
+const http = require('http')
+const detectPort = require('detect-port')
+const killPort = require('kill-port')
+const App = require('./App')
 
 class WebServer {
   constructor(config) {
@@ -63,4 +63,4 @@ class WebServer {
   }
 }
 
-export default (config) => new WebServer(config)
+module.exports = (config) => new WebServer(config)

@@ -1,0 +1,22 @@
+{
+  "name": "ciao-ssr-client",
+  "version": "1.0.0",
+  "description": "ciao-ssr service client",
+  "main": "SSR.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciao-chung/ciao-ssr.git"
+  },
+  "keywords": [
+    "chrome headless",
+    "puppeteer",
+    "server side render",
+    "ssr"
+  ],
+  "author": "Ciao Chung <ciao0958@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ciao-chung/ciao-ssr/issues"
+  },
+  "homepage": "https://github.com/ciao-chung/ciao-ssr#readme"
+}

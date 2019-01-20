@@ -1,10 +1,9 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import UrlParser from 'url-parse'
-import UrlRegex from 'url-regex'
-import Crawler from 'Modules/Crawler/Crawler'
-import Cache from 'Modules/Cache/Cache'
-
+const express = require('express')
+const bodyParser = require('body-parser')
+const UrlParser = require('url-parse')
+const UrlRegex = require('url-regex')
+const Crawler = require('../Crawler/Crawler')
+const Cache = require('../Cache/Cache')
 class App {
   async init(config) {
     this.config = config
@@ -95,4 +94,4 @@ class App {
   }
 }
 
-export default new App()
+module.exports = new App()

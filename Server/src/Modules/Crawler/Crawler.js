@@ -1,5 +1,6 @@
-import puppeteer from 'puppeteer'
-import child_process from 'child_process'
+const puppeteer = require('puppeteer')
+const child_process = require('child_process')
+
 class Crawler {
   async init(config) {
     this.debug = config.debug == true
@@ -92,4 +93,4 @@ class Crawler {
   }
 }
 
-export default new Crawler()
+module.exports = new Crawler()

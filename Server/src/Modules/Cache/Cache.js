@@ -1,14 +1,15 @@
-import cacheManager from 'cache-manager'
-import fsStore from 'cache-manager-fs'
+const cacheManager = require('cache-manager')
+const fsStore = require('cache-manager-fs')
 class Cache {
   async init(config) {
+    log(`Cache Path: ${cachePath}`)
     this.config = config
     this.cacheManager = cacheManager.caching({
       store: fsStore,
       options: {
         ttl: this._getCacheConfigProperty('ttl')*60 || 1,
         maxsize: this._getCacheConfigProperty('maxsize')*1000 || 1000*1000,
-        path: this._getCacheConfigProperty('path') || 'cache',
+        path: cachePath,
         preventfill:true,
       }
     })
@@ -37,4 +38,4 @@ class Cache {
   }
 }
 
-export default new Cache()
+module.exports = new Cache()
