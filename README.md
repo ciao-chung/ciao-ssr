@@ -107,21 +107,67 @@ ciao-ssr --clean
 
 ## Client side(web)
 
-**Installation**
+### Installation
 
 ```bash
 yarn add ciao-ssr-client
 ```
 
-**Copy proxy(.htaccess) and middleware(ssr.php) to web root**
+### Copy proxy(.htaccess) and middleware(ssr.php) to web root
 
-> You can find them in ciao-ssr-client in node_modules
+You can find them in node_modules/ciao-ssr-client
 
-```bash
-cd node_modules/ciao-ssr-client/dist/
+Or copy here
+
+**.htaccess**
+
+```apacheconfig
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{HTTP_USER_AGENT} !(firefox|chrome|safari|msie|edge|opera) [NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ ssr.php [L]
+
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
 ```
 
-**Use client library in web**
+**ssr.php**
+
+```php
+<?php
+
+$ssrHost = 'https://ssr.server';
+$host = $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"];
+$user_agent = urlencode($_SERVER['HTTP_USER_AGENT']);
+$port = '';
+
+if($_SERVER["REQUEST_SCHEME"] == 'http' && $_SERVER["SERVER_PORT"] != 80){
+    $port = ':'.$_SERVER["SERVER_PORT"];
+}
+
+if($_SERVER["REQUEST_SCHEME"] == 'https' && $_SERVER["SERVER_PORT"] != 443){
+    $port = ':'.$_SERVER["SERVER_PORT"];
+}
+$requestUrl = $host.$port.$_SERVER['REQUEST_URI'];
+$result = json_decode(file_get_contents($ssrHost.'/render?url='.$requestUrl), true);
+
+if(!$result || !$result['statusCode']) {
+    header("HTTP/1.0 404 Not Found");
+    die;
+}
+
+http_response_code($result['statusCode']);
+echo $result['content'];
+```
+
+
+### Use client library in web
 
 We provide a client side library to trigger server side render service
 
