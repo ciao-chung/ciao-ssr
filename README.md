@@ -1,4 +1,4 @@
-# Puppeteer Server Side Render
+# Ciao SSR
 
 > A server side render service based on puppeteer
 
@@ -53,28 +53,12 @@ sudo apt-get install -f
 rm google-chrome-stable_current_amd64.deb
 ```
 
-## Start service
+## Setup/Start server
 
-**Clone repository**
-
-```bash
-git clone git@github.com:ciao-chung/puppeteer-server-side-render.git
-```
-
-**Go into Server folder and install node modules**
+**Installation**
 
 ```bash
-cd Prod/Server
-
-yarn
-```
-
-**Setup config by coping the example config**
-
-> In Prod/Server/static
-
-```bash
-cp config.example.json config.json
+yarn global add ciao-ssr
 ```
 
 **Start server**
@@ -82,12 +66,18 @@ cp config.example.json config.json
 > In Prod/Server
 
 ```bash
-npm run start
+ciao-ssr --config=/file-to-your/config.json
+```
+
+**Clean cache**
+
+```bash
+ciao-ssr --clean
 ```
 
 ## Configuration
 
-> Prod/Server/static/config.json
+> config json
 
 **Example**
 
@@ -119,24 +109,16 @@ npm run start
 
 **Installation**
 
-**npm**
-
 ```bash
-npm install puppeteer-server-side-render --save
-```
-
-**yarn**
-
-```bash
-yarn add puppeteer-server-side-render
+yarn add ciao-ssr-client
 ```
 
 **Copy proxy(.htaccess) and middleware(ssr.php) to web root**
 
-> You can find them in puppeteer-server-side-render in node_modules
+> You can find them in ciao-ssr-client in node_modules
 
 ```bash
-cd node_modules/puppeteer-server-side-render/dist/
+cd node_modules/ciao-ssr-client/dist/
 ```
 
 **Use client library in web**
@@ -144,7 +126,7 @@ cd node_modules/puppeteer-server-side-render/dist/
 We provide a client side library to trigger server side render service
 
 ```javascript
-import ServerSideRenderClient from 'puppeteer-server-side-render'
+import ServerSideRenderClient from 'ciao-ssr-client'
 ServerSideRenderClient()
 
 // when your all async data are ready and render
