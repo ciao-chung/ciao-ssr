@@ -1,6 +1,6 @@
 {
   "name": "ciao-ssr-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ciao-ssr service client",
   "main": "SSR.js",
   "repository": {

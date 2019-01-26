@@ -231,7 +231,7 @@ sudo yarn global add pm2
 
 ```bash
 # start service
-pm2 start app.js --name "ssr" --cwd==/path-to-ssr
+pm2 start ciao-ssr --name="ssr" -- --config=/file-to-your/config.json
 
 # stop service
 pm2 stop ssr
