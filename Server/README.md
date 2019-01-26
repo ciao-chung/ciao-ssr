@@ -9,6 +9,10 @@ This is a puppeteer(chrome headless) server side render service.
 * Can limit render origin
 * Cache
 
+## Required
+
+- Node.js 8.x up
+
 ## Dependencies
 
 * [express](https://github.com/expressjs/express)
