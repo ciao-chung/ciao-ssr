@@ -252,7 +252,7 @@ pm2 log ssr
 
 ## Start With Docker
 
-The service will be started by pm2 when your container start
+This service will be started by pm2 when your container start
 
 Just setup port and config json file of your local host
 
