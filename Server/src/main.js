@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const moment = require('moment')
 const WebServer = require('./Modules/WebServer/WebServer')
 const { resolve } = require('path')
+const { version } = require('../package.json')
 class App {
   constructor() {
     global.chalk = chalk
@@ -69,7 +70,7 @@ class App {
   }
 
   async initServer() {
-    log('Server start')
+    log(`Server start(${version})`)
     WebServer(this.config)
   }
 

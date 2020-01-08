@@ -1,6 +1,6 @@
 {
   "name": "ciao-ssr",
-  "version": "1.0.3",
+  "version": "2.0.0-alpha",
   "description": "A prerender service which base on puppetter",
   "author": "Ciao Chung <ciao0958@gmail.com>",
   "license": "MIT",
