@@ -15,7 +15,7 @@
   "dependencies": {
     "bootstrap": "3.4.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "vue": "^2.5.2",
     "vue-meta": "^1.5.2",
     "vue-moment": "^4.0.0",
