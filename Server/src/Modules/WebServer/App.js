@@ -88,9 +88,6 @@ class App {
   _logResult(url, result) {
     const color = result.type == 'PageError' ? 'red' : 'green'
     log(`Response: [ ${result.statusCode} ] \t [ ${result.type} ] \t [ ${url} ]`, color)
-    if(this.config.debug) {
-      log(JSON.stringify(result), 'magenta')
-    }
   }
 }
 
