@@ -257,14 +257,18 @@ This service will be started by pm2 when your container start
 Just setup port and config json file of your local host
 
 ```bash
-docker run --name ssr -p 3000:3000 -v /path-to-your-config.json:/config/ssr.json -d ciaochung/ciao-ssr
+# build image
+docker-compose build --no-cahce
+
+# run
+docker-compose up -d
+
+# exec
+docker exec ssr /bin/bash
 ```
 
-**Example**
+** Volume **
 
-- port: 3000
-- config json file path: /home/user/config/ssr.json
+docker folder will mount as docker volume.
 
-```bash
-docker run --name ssr -p 3000:3000 -v /home/user/config/ssr.json:/config/ssr.json -d ciaochung/ciao-ssr
-```
+you should setup docker/config.json to configure your SSR service

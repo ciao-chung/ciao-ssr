@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  ssr:
+    container_name: ssr
+    build:
+      context: ./
+    restart: unless-stopped
+    tty: true
+    working_dir: /ssr-config
+    volumes:
+      # make sure docker/config.json is exist and valid
+      - "./docker:/ssr-config"
+    ports:
+      - "3000:3000"
+    networks:
+      - docker-net
+
+networks:
+  docker-net:
+    driver: bridge

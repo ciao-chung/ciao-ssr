@@ -1,0 +1,17 @@
+{
+  "allowOrigin": [
+    "*"
+  ],
+  "host": "0.0.0.0",
+  "port": "3000",
+  "cache": {
+    "ttl": 300,
+    "maxsize": 1000
+  },
+  "launchOptions": {
+    "args": [
+      "--no-sandbox", "--disable-setuid-sandbox"
+    ]
+  },
+  "debug": false
+}
