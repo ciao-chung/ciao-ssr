@@ -4,8 +4,6 @@ MAINTAINER Ciao Chung
 
 EXPOSE 3000
 
-COPY ./docker/entrypoint.sh /docker/entrypoint.sh
-
 RUN chmod 755 /docker/entrypoint.sh \
   && apt-get update -y \
   && apt-get install -y vim fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0&& \
