@@ -28,6 +28,7 @@ class App {
   }
 
   _setupRoute() {
+    this.app.get('/',  (request, response) => response.status(200).send('ssr server run'))
     this.app.get('/render',  (request, response) => this._handleRender(request, response))
     this.app.all('*', (request, response) => response.sendStatus(400))
     return this.app
