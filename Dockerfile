@@ -4,8 +4,7 @@ MAINTAINER Ciao Chung
 
 EXPOSE 3000
 
-RUN chmod 755 /docker/entrypoint.sh \
-  && apt-get update -y \
+RUN apt-get update -y \
   && apt-get install -y vim fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0&& \
     libatspi2.0-0 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 && \
     libxss1 libxtst6 lsb-release xdg-utils; exit 0
