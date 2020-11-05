@@ -265,6 +265,9 @@ docker-compose up -d
 
 # exec
 docker exec ssr /bin/bash
+
+# start service with pm2 in container
+pm2 start ciao-ssr --name='ssr' -- --config=/ssr-config/config.json --watch && pm2 save
 ```
 
 ** Volume **

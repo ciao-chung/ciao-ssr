@@ -100,6 +100,12 @@ ciao-ssr --clean
   * ttl(optional): **Number**, time to life of cache(minutes), default is 1 minute.
   * maxsize(optional): **Number**, maxsize of cache file on disk(Kilobyte), default is 1MB.
   * path(optional): **String**, cache file store path, default is 'cache'.
+  * driver(optional): **String**, default is file, here are available drivers.
+        -   file
+        -   redis
+  * redisHost(optional): **String** redis host(default is "localhost"), it only work when redis driver. 
+  * redisPort(optional): **String** redis port(default is "6379"), only work when redis driver. 
+  * redisPass(optional): **String** redis password(default is null), only work when redis driver. 
 * debug(optional): **Boolean**, debug mode, it will open chrome without headless mode.
 * launchOptions(optional): **Object**, you can setup any custom puppeteer [launch option](https://goo.gl/zoshDo) by this property 
 

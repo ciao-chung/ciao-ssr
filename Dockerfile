@@ -1,4 +1,5 @@
 FROM node:10
+
 MAINTAINER Ciao Chung
 
 EXPOSE 3000
@@ -24,4 +25,4 @@ RUN rm -rf google-chrome*.deb \
   && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
      --no-install-recommends
 
-CMD ["/docker/entrypoint.sh"]
+CMD ["sh", "-c", "tail -f /dev/null"]
